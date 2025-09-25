@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>D.S.T Zone — GTA SA</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans',sans-serif;background:linear-gradient(180deg,#071426,#031722);color:#fff;transition:0.5s;}
+body.light-mode{background:#f0f0f0;color:#081019;}
+.top-bar{position:fixed;top:10px;right:10px;display:flex;gap:10px;z-index:1000;}
+.top-bar button{padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:700;}
+.login-card{background:rgba(255,255,255,0.05);padding:30px;border-radius:16px;box-shadow:0 12px 40px rgba(2,6,23,0.6);width:90%;max-width:380px;text-align:center;margin:50px auto;transition:0.5s;}
+body.light-mode .login-card{background:#fff;color:#081019;box-shadow:0 12px 40px rgba(0,0,0,0.2);}
+.login-card h2{margin-bottom:20px;color:#ffb86b;}
+input{width:100%;padding:10px;margin:10px 0;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;outline:none;transition:0.5s;}
+body.light-mode input{background:#f0f0f0;color:#081019;border:1px solid #ccc;}
+button.send-btn{width:100%;padding:12px;margin-top:10px;border:none;border-radius:8px;background:linear-gradient(90deg,#ffb86b,#06b6d4);color:#081019;font-weight:700;cursor:pointer;}
+.notification{position:fixed;bottom:20px;right:-400px;background:linear-gradient(135deg,#ffb86b,#06b6d4);color:#081019;padding:16px 28px;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.5);font-weight:700;transition:right 0.7s;z-index:999;max-width:320px;text-align:left;}
+.notification.show{right:20px;}
+.notification .title{font-size:16px;font-weight:800;margin-bottom:4px;}
+.notification .otp-code{font-size:20px;letter-spacing:2px;margin-top:2px;}
+#mainPage{display:none;width:100%;max-width:1200px;margin:0 auto;padding:20px;}
+.card{background:rgba(255,255,255,0.05);padding:25px;border-radius:16px;margin-bottom:30px;transition:0.5s;overflow:hidden;}
+body.light-mode .card{background:#fff;color:#081019;}
+.avatar img{width:140px;height:140px;border-radius:16px;object-fit:cover;}
+.download-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:15px;}
+.btn{padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer;text-decoration:none;transition:0.3s;}
+.btn-download{background:linear-gradient(90deg,#ffb86b,#ff7a59);color:#081019;}
+.btn-download:hover{transform:scale(1.05);}
+.btn-secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.75);}
+body.light-mode .btn-secondary{color:#081019;border:1px solid #ccc;}
+.btn-secondary:hover{transform:scale(1.05);}
+.hero{background:linear-gradient(180deg,#ffb86b,#ff7a59);padding:50px 20px;border-radius:20px;margin-bottom:30px;text-align:center;color:#081019;}
+.hero h1{font-size:48px;margin-bottom:10px;}
+.hero p{font-size:18px;line-height:1.6;}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:30px;}
+.feature-card{background:rgba(255,255,255,0.05);padding:20px;border-radius:16px;text-align:center;transition:0.5s;}
+body.light-mode .feature-card{background:#fff;color:#081019;}
+.feature-card h3{margin-bottom:10px;color:#ffb86b;}
+.feature-card p{font-size:14px;line-height:1.5;}
+.testimonials{margin-bottom:30px;}
+.testimonial-card{background:rgba(255,255,255,0.05);padding:20px;border-radius:16px;margin-bottom:15px;}
+body.light-mode .testimonial-card{background:#fff;color:#081019;}
+.testimonial-card p{font-style:italic;}
+footer{text-align:center;margin-top:30px;color:rgba(255,255,255,0.6);}
+body.light-mode footer{color:#666;}
+@media(max-width:768px){.hero h1{font-size:32px;}}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <button id="themeToggle">Toggle Light/Dark</button>
+  <button id="shareBtn">Share</button>
+</div>
+
+<div class="login-card" id="loginCard">
+  <h2>D.S.T Zone — Login</h2>
+  <input type="text" id="phone" placeholder="Enter phone number" />
+  <button class="send-btn" id="sendOtpBtn">Send OTP</button>
+</div>
+
+<div class="notification" id="notification">
+  <div class="title">D.S.T Zone — OTP Verification</div>
+  <div>Hi <strong>User</strong>, your OTP is:</div>
+  <div class="otp-code" id="otpCode">1234</div>
+</div>
+
+<div id="mainPage">
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Welcome to D.S.T Zone</h1>
+    <p>Experience GTA SA like never before — secure downloads, professional interface, and engaging content. Toggle themes, share with friends, and explore full features below.</p>
+  </div>
+
+  <!-- GTA SA Card -->
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <div class="avatar"><img src="https://images.steamusercontent.com/ugc/781875067786868783/93E22016CDD3E4EFB88CA4C829481B0514DF3356/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" alt="GTA SA"></div>
+      <div>
+        <h1>GTA SA</h1>
+        <p>Website: <strong>Dev Singh Tomar</strong></p>
+      </div>
+    </div>
+    <div class="download-row">
+      <a class="btn btn-download" href="https://drive.google.com/file/d/1LzJ8Nzo50a55ja16pCoruL0jyVkpq-GN/view?usp=drive_link" target="_blank">⬇ Download</a>
+      <a class="btn btn-secondary" href="tel:+918770557581">📞 Contact</a>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="features">
+    <div class="feature-card">
+      <h3>Secure OTP Login</h3>
+      <p>Ensure safe access with one-time password verification for all users.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Dark / Light Theme</h3>
+      <p>Switch between modern dark mode and bright light mode for better experience.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Responsive Design</h3>
+      <p>Enjoy a fully optimized experience on desktop, laptop, and mobile devices.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Share with Friends</h3>
+      <p>Easily share the website link via WhatsApp, Facebook, or Telegram.</p>
+    </div>
+  </div>
+
+  <!-- About Me Section -->
+  <div class="card about">
+    <h3>About Me</h3>
+    <p>Welcome to <strong>D.S.T Zone</strong> — your ultimate destination for GTA SA content. This professional landing page is designed to provide a smooth user experience with secure OTP login and a modern interface. Users can easily download content, contact directly, toggle light/dark themes, and share with friends. Fully responsive and scrollable, this page gives a professional gaming platform feel for both desktop and mobile users. Elevate your GTA SA experience with D.S.T Zone!</p>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="testimonials">
+    <h3 style="color:#ffb86b;margin-bottom:10px;">Testimonials</h3>
+    <div class="testimonial-card">
+      <p>"D.S.T Zone made GTA SA downloads super easy and secure! Highly recommended." – GamerX</p>
+    </div>
+    <div class="testimonial-card">
+      <p>"The OTP login and theme toggle are amazing features! Smooth experience." – RockstarFan</p>
+    </div>
+    <div class="testimonial-card">
+      <p>"I love the responsive design. Looks perfect on my phone and laptop." – MobileGamer</p>
+    </div>
+  </div>
+
+  <footer>© <span id="year"></span> Dev Singh Tomar — D.S.T Zone</footer>
+</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// OTP Login
+const loginCard = document.getElementById('loginCard');
+const mainPage = document.getElementById('mainPage');
+const notification = document.getElementById('notification');
+const otpCodeElem = document.getElementById('otpCode');
+let generatedOtp = '', loginDone=false;
+
+document.getElementById('sendOtpBtn').addEventListener('click', ()=>{
+  if(loginDone) return;
+  const phone=document.getElementById('phone').value.trim();
+  if(!phone){alert('Enter phone number'); return;}
+  generatedOtp = Math.floor(1000+Math.random()*9000).toString();
+  otpCodeElem.textContent = generatedOtp;
+  notification.classList.add('show');
+  setTimeout(()=>{notification.classList.remove('show'); showOtpInput();},4000);
+  loginDone=true;
+});
+
+function showOtpInput(){
+  loginCard.innerHTML = `<h2>Enter OTP</h2><input type='text' id='otpInput' placeholder='Enter OTP'/><button class='send-btn' id='verifyOtpBtn'>Verify OTP</button>`;
+  document.getElementById('verifyOtpBtn').addEventListener('click', ()=>{
+    const userOtp=document.getElementById('otpInput').value.trim();
+    if(userOtp===generatedOtp){loginCard.style.display='none'; mainPage.style.display='block';}
+    else{
+      notification.querySelector('.title').textContent='D.S.T Zone — OTP Verification';
+      notification.querySelector('.otp-code').textContent='❌ Incorrect OTP';
+      notification.classList.add('show');
+      setTimeout(()=>{notification.classList.remove('show');},3000);
+    }
+  });
+}
+
+// Theme toggle
+document.getElementById('themeToggle').addEventListener('click',()=>{document.body.classList.toggle('light-mode');});
+
+// Share
+document.getElementById('shareBtn').addEventListener('click', ()=>{
+  const url=encodeURIComponent(window.location.href);
+  const text=encodeURIComponent('Check out D.S.T Zone — GTA SA!');
+  const whatsapp=`https://api.whatsapp.com/send?text=${text}%20${url}`;
+  const facebook=`https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  const telegram=`https://t.me/share/url?url=${url}&text=${text}`;
+  const choice=prompt('Share via: 1) WhatsApp 2) Facebook 3) Telegram (Enter 1,2,3)');
+  if(choice==='1') window.open(whatsapp,'_blank');
+  else if(choice==='2') window.open(facebook,'_blank');
+  else if(choice==='3') window.open(telegram,'_blank');
+});
+</script>
+
+</body>
+</html>
